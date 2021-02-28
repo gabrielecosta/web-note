@@ -25,7 +25,7 @@ mobile: ['', Validators.required]
 ngOnInit() {
 }
 
-postdata(angForm1)
+postdata(angForm1: { value: { name: String; email: String; password: String; }; })
 {
 this.dataService.userregistration(angForm1.value.name,angForm1.value.email,angForm1.value.password)
 .pipe(first())

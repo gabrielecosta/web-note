@@ -21,7 +21,7 @@ password: ['', Validators.required]
 
 ngOnInit() {
 }
-postdata(angForm1)
+postdata(angForm1: { value: { email: String; password: String; }; })
 {
 this.dataService.userlogin(angForm1.value.email,angForm1.value.password)
 .pipe(first())
