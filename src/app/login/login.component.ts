@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-
-import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 
 @Component({
 selector: 'app-login',
@@ -21,19 +20,21 @@ password: ['', Validators.required]
 
 ngOnInit() {
 }
-postdata(angForm1: { value: { email: String; password: String; }; })
-{
-this.dataService.userlogin(angForm1.value.email,angForm1.value.password)
+postdata(angForm1: { value: { email: String; password: String; }; }) {
+this.dataService.userlogin(angForm1.value.email, angForm1.value.password)
 .pipe(first())
 .subscribe(
 data => {
 const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/dashboard';
+console.log("logged in");
 this.router.navigate([redirect]);
 },
 error => {
 alert("User name or password is incorrect")
 });
 }
+
 get email() { return this.angForm.get('email'); }
 get password() { return this.angForm.get('password'); }
+
 }

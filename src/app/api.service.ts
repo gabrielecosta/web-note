@@ -1,20 +1,17 @@
-import { EventEmitter, Injectable, Output } from '@angular/core';
-
+import { Injectable, Output, EventEmitter } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Users } from '../model/users';
-import { map } from 'rxjs/operators';
 
 @Injectable({
 providedIn: 'root'
 })
 
 export class ApiService {
-redirectUrl: string | undefined;
-baseUrl:string = "http://localhost/angular_admin/php";
-
+redirectUrl: string = '/dashboard';
+baseUrl: string = "http://localhost/login_CRUD/angular/php";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-
-constructor(private httpClient : HttpClient) { }
+constructor(private httpClient: HttpClient) { }
 public userlogin(username: String, password: String) {
 alert(username)
 return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
