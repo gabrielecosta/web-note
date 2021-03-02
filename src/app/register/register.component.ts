@@ -13,19 +13,20 @@ styleUrls: ['./register.component.css']
 
 export class RegisterComponent implements OnInit {
 angForm: FormGroup;
+
 constructor(private fb: FormBuilder,private dataService: ApiService,private router:Router) {
-this.angForm = this.fb.group({
-email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
-password: ['', Validators.required],
-name: ['', Validators.required],
-mobile: ['', Validators.required]
-});
+  this.angForm = this.fb.group({
+    email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
+    password: ['', Validators.required],
+    name: ['', Validators.required],
+    mobile: ['', Validators.required]
+    });
 }
 
 ngOnInit() {
 }
 
-postdata(angForm1: { value: { name: String; password: String; email: String}; })
+postdata (angForm1: { value: { name: String; password: String; email: String}; })
 {
   this.dataService.userregistration(angForm1.value.name, angForm1.value.email, angForm1.value.password)
     .pipe(first())
