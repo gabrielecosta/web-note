@@ -1,0 +1,80 @@
+<div class="center">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" width="5%">Orario</th>
+        <th scope="col" width="8%">Lunedì</th>
+        <th scope="col" width="8%">Martedì</th>
+        <th scope="col" width="8%">Mercoledì</th>
+        <th scope="col" width="8%">Giovedì</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">09-10</th>
+        <td></td>
+        <td class="calcolatori">Architettura</td>
+        <td class="algebra">Algebra</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th scope="row">10-11</th>
+        <td class="analisi">Analisi</td>
+        <td class="calcolatori">Architettura</td>
+        <td class="algebra">Algebra</td>
+        <td class="calcolatori">Architettura</td>
+      </tr>
+      <tr>
+        <th scope="row">11-12</th>
+        <td class="analisi">Analisi</td>
+        <td class="algebra">Algebra</td>
+        <td class="algebra">Algebra</td>
+        <td class="calcolatori">Architettura</td>
+      </tr>
+      <tr>
+        <th scope="row">12-13</th>
+        <td class="analisi">Analisi</td>
+        <td class="algebra">Algebra</td>
+        <td></td>
+        <td class="calcolatori">Architettura</td>
+      </tr>
+      <tr>
+        <th scope="row">15-16</th>
+        <td class="fisica">Fisica</td>
+        <td></td>
+        <td class="fisica">Fisica</td>
+        <td class="analisi">Analisi</td>
+      </tr>
+      <tr>
+        <th scope="row">16-17</th>
+        <td class="fisica">Fisica</td>
+        <td class="calcolatori">Fondamenti</td>
+        <td class="fisica">Fisica</td>
+        <td class="analisi">Analisi</td>
+      </tr>
+      <tr>
+        <th scope="row">17-18</th>
+        <td></td>
+        <td class="calcolatori">Fondamenti</td>
+        <td></td>
+        <td class="analisi">Analisi</td>
+      </tr>
+    </tbody>
+  </table>
+  <br> <br>
+
+  <table mdbTable>
+    <thead>
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let el of elements">
+        <th scope="row">{{el.id}}</th>
+        <td>{{el.name}}</td>
+        <td>{{el.descr}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

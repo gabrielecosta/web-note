@@ -1,0 +1,28 @@
+.table {
+  border : 1px solid black;
+  width: 100%;
+}
+
+.center {
+  padding: 10%;
+}
+
+.calcolatori {
+  background-color: #4895ef;
+  color: white;
+}
+
+.analisi {
+  background-color: #3a0ca3;
+  color: white;
+}
+
+.algebra {
+  background-color: green;
+  color: white;
+}
+
+.fisica {
+  background-color: #74c69d;
+  color: white;
+}

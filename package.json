@@ -21,7 +21,10 @@
     "@angular/platform-browser": "~11.2.3",
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
+    "@progress/kendo-angular-intl": "^3.1.0",
+    "@progress/kendo-angular-scheduler": "^2.1.1",
     "angular-bootstrap-md": "^10.1.1",
+    "ng-uikit-pro-standard": "^1.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
