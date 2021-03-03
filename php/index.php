@@ -1,9 +1,9 @@
 <?php
-include 'database.php';
+include_once("database.php");
 $products = [];
 
 $sql = "SELECT * FROM products";
-if($result = $db->query($sql))
+if($result = $mysqli->query($sql))
 {
 	$i = 0;
 	while($row = $result->fetch_assoc())

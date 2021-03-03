@@ -1,5 +1,5 @@
 <?php
-include 'database.php';
+include_once("database.php");
 $postdata = file_get_contents("php://input");
 if(isset($postdata) && !empty($postdata))
 {
@@ -9,14 +9,14 @@ if(isset($postdata) && !empty($postdata))
 	{
 		return http_response_code(400);
 	}
-	$name = mysqli_real_escape_string($db, trim($request['name']));
-	$price = mysqli_real_escape_string($db, (int)$request['price']);
+	$name = mysqli_real_escape_string($mysqli, trim($request['name']));
+	$price = mysqli_real_escape_string($mysqli, (int)$request['price']);
 	$sql = "INSERT INTO products (id,name,price) VALUES (null,'$name',$price)";
-	if($db->query($sql))
+	if($mysqli->query($sql))
 	{
 		http_response_code(201);
 		$product = [
-		'id' => mysqli_insert_id($db),'name' => $name,
+		'id' => mysqli_insert_id($mysqli),'name' => $name,
 		'price' => $price];
 		echo json_encode($product);
 	}

@@ -1,5 +1,5 @@
 <?php
-require 'database.php';
+include_once("database.php");
 $postdata = file_get_contents('php://input');
 
 if(isset($postdata) && !empty($postdata))
@@ -8,12 +8,12 @@ if(isset($postdata) && !empty($postdata))
 	if (trim($request['name']) == '' || (float)$request['price'] < 0) {
 		return http_response_code(400);
 	}
-	$id = mysqli_real_escape_string($db, (int)$request['id']);
-	$name = mysqli_real_escape_string($db, trim($request['name']));
-	$price = mysqli_real_escape_string($db, (float)$request['price']);
+	$id = mysqli_real_escape_string($mysqli, (int)$request['id']);
+	$name = mysqli_real_escape_string($mysqli, trim($request['name']));
+	$price = mysqli_real_escape_string($mysqli, (float)$request['price']);
 	$sql = "UPDATE products SET name='$name',price=$price WHERE id = $id";
 
-	if($db->query($sql))
+	if($mysqli->query($sql))
 	{
 		http_response_code(204);
 	}
