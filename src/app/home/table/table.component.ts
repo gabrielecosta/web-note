@@ -9,9 +9,6 @@ export class TableComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   elements: any = [
     {id: 1, name: 'Presenza', descr: 'F130 ed.8'},
     {id: 2, name: 'Analisi', descr: 'Su Teams il venerdì pomeriggio'},
@@ -22,5 +19,8 @@ export class TableComponent implements OnInit {
   ];
 
   headElements = ['ID', 'Name', 'Descrizione'];
+
+  ngOnInit(): void {
+  }
 
 }

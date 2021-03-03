@@ -14,9 +14,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { RegisterComponent } from './register/register.component';
 import { TableComponent } from './home/table/table.component';
+import { NoteListComponent } from './dashboard/note-list/note-list.component';
 
 // MDB Angular Pro
-;
+
 
 
 
@@ -29,7 +30,8 @@ import { TableComponent } from './home/table/table.component';
     RegisterComponent,
     DashboardComponent,
     NavbarComponent,
-    TableComponent
+    TableComponent,
+    NoteListComponent
   ],
   imports: [
     BrowserModule,

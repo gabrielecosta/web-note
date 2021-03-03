@@ -12,10 +12,10 @@ export class DashboardComponent implements OnInit {
   constructor(private service: ApiService) { }
 
   ngOnInit(): void {
-    console.log(this.service.getToken())
+    console.log(this.service.getToken());
   }
 
-  //get ID of the logged in user
+  // get ID of the logged in user
   getToken(): string | null {
     return this.service.getToken();
   }
