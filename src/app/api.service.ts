@@ -1,6 +1,8 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Product } from '../model/product';
 import { Users } from '../model/users';
 import { map } from 'rxjs/operators';
 
@@ -17,7 +19,7 @@ baseUrl: string = "http://localhost/login_CRUD/angular/php";
 constructor(private httpClient: HttpClient) { }
 
 public userlogin(username: String, password: String) {
-  //alert(username)
+  // alert(username)
   return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
     .pipe(map(Users => {
       this.setToken(Users[0]);
@@ -33,25 +35,25 @@ public userregistration(name: String, email: String, pwd: String) {
     }));
 }
 
-//set Token: when the user logs, his name (that will be used as a key) will be
-//stored on a localStorage. So, we can do a fitleredSearch in a second moment
+// set Token: when the user logs, his name (that will be used as a key) will be
+// stored on a localStorage. So, we can do a fitleredSearch in a second moment
 setToken(token: Users) {
   localStorage.setItem('token', token.name);
 }
 
 
-//it is used as a method for getting the user
+// it is used as a method for getting the user
 getToken() {
   return localStorage.getItem('token');
 }
 
-//it deletes the token when the user clicks logout
+// it deletes the token when the user clicks logout
 deleteToken() {
   localStorage.removeItem('token');
 }
 
 
-//checks if the token is null or not
+// checks if the token is null or not
 isLoggedIn() {
   const usertoken = this.getToken();
     if (usertoken != null) {
@@ -59,4 +61,24 @@ isLoggedIn() {
     }
     return false;
     }
+
+
+// crud operations
+
+readProducts(): Observable<Product[]> {
+  return this.httpClient.get<Product[]>(`${this.baseUrl}/index.php`);
+}
+
+createProduct(product: Product): Observable<Product>{
+  return this.httpClient.post<Product>(`${this.baseUrl}/create.php`, product);
+}
+
+updateProduct(product: Product) {
+  return this.httpClient.put<Product>(`${this.baseUrl}/update.php`, product);
+}
+
+deleteProduct(id: number) {
+  return this.httpClient.delete<Product>(`${this.baseUrl}/delete.php/?id=${id}`);
+}
+
 }
