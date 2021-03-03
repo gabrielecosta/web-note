@@ -9,39 +9,40 @@ import { ApiService } from './../api.service';
 })
 export class NavbarComponent implements OnInit {
 
-  ngOnInit(): void {
+  constructor(private dataService: ApiService) {
+  dataService.getLoggedInName.subscribe(name => this.changeName(name));
+  if (this.dataService.isLoggedIn())
+  {
+  console.log('loggedin');
+  this.loginbtn = false;
+  this.logoutbtn = true;
+  }
+  else{
+  this.loginbtn = true;
+  this.logoutbtn = false;
+  }
+
   }
 
   collapsed = true;
-  toggleCollapsed(): void {
-    this.collapsed = !this.collapsed;
-  }
 
   loginbtn: boolean;
   logoutbtn: boolean;
 
-  constructor(private dataService: ApiService) {
-  dataService.getLoggedInName.subscribe(name => this.changeName(name));
-  if(this.dataService.isLoggedIn())
-  {
-  console.log("loggedin");
-  this.loginbtn=false;
-  this.logoutbtn=true
+  ngOnInit(): void {
   }
-  else{
-  this.loginbtn=true;
-  this.logoutbtn=false
-  }
-
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
   }
 
   private changeName(name: boolean): void {
   this.logoutbtn = name;
   this.loginbtn = !name;
   }
-  logout()
-  {
+
+  logout(): void {
   this.dataService.deleteToken();
   window.location.href = window.location.href;
   }
+
 }

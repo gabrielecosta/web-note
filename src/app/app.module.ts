@@ -17,7 +17,7 @@ import { TableComponent } from './home/table/table.component';
 import { NoteListComponent } from './dashboard/note-list/note-list.component';
 
 // MDB Angular Pro
-;
+
 
 
 

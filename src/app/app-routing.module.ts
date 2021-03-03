@@ -13,7 +13,7 @@ const routes: Routes = [
 { path: 'registration', component: RegisterComponent },
 { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard] }
 
-]
+];
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],
